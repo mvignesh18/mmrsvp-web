@@ -1,0 +1,12 @@
+.jumbotron{
+    background-color: #ffffff
+}
+.spinner {
+    display: block;
+    position: fixed;
+    z-index: 1031;
+    top: 50%;
+    //left: 50%; /* or: left: 50%; */
+    // margin-top: -..px; /* have of the elements height */
+    // margin-right: -..px; /* have of the elements widht */
+  }
