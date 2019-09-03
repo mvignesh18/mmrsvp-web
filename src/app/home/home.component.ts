@@ -37,12 +37,14 @@ export class HomeComponent implements OnInit {
   fasQuestionCircle = fasQuestionCircle
   farQuestionCircle = farQuestionCircle
 
+  readonly host = 'https://mmrsvp.azurewebsites.net'
+  readonly url = '/api/players'
   constructor(private http: HttpClient){
     
   }
 
   ngOnInit(){
-    this.http.get<any>('/api/players')
+    this.http.get<any>(`${this.host}${this.url}`)
             .subscribe(players => {
               this.players = players
               this.playerCount = players.filter(player=>player.availability == 1).length
@@ -52,7 +54,7 @@ export class HomeComponent implements OnInit {
   }
 
   onReset(){
-    this.http.put('/api/players', { })
+    this.http.put(`${this.host}${this.url}`, { })
         .subscribe((players: any) => {
           this.players = players
           this.playerCount = this.players.filter(player=>player.availability == 1).length
@@ -64,7 +66,7 @@ export class HomeComponent implements OnInit {
   onOptionSelect(player,option : number){
   
     player.availability = player.availability == option ? 0 : option
-    this.http.put(`/api/players/${player.id}`,{
+    this.http.put(`${this.host}${this.url}/${player.id}`,{
       availability : player.availability
     }).subscribe(()=>{
       this.playerCount = this.players.filter(player=>player.availability == 1).length
