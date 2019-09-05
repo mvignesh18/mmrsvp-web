@@ -101,7 +101,7 @@ selectNodeVersion () {
 echo Handling node.js deployment.
 
 # 1. Select node version
-SelectNodeVersion
+selectNodeVersion
 
 # 2. Install npm packages
 IF EXIST "%DEPLOYMENT_SOURCE%\package.json" (
